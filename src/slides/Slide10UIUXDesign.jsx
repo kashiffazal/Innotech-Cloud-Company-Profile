@@ -1,49 +1,97 @@
-import React from 'react';
-import BackgroundShapes from '../components/BackgroundShapes';
-import { Palette, Search, Layers, Layout, SlidersHorizontal, Sparkles, CheckCircle2, Eye } from 'lucide-react';
+import React from "react";
+import BackgroundShapes from "../components/BackgroundShapes";
+import {
+  Palette,
+  Search,
+  Layers,
+  Layout,
+  SlidersHorizontal,
+  Sparkles,
+  CheckCircle2,
+  Eye,
+} from "lucide-react";
 
-export default function Slide10UIUXDesign({ theme = 'light' }) {
-  const isDark = theme === 'dark';
+export default function Slide10UIUXDesign({ theme = "light" }) {
+  const isDark = theme === "dark";
 
   const uxBoxes = [
-    { title: "User Research & Personas", desc: "Understanding persona needs, user journeys, and structuring information architecture.", icon: Search },
-    { title: "Information Architecture", desc: "Mapping intuitive user flows and sitemaps for seamless digital navigation.", icon: Layers },
-    { title: "Wireframing & Usability", desc: "Low-fidelity structural layouts to quickly validate core product functionality.", icon: Layout },
-    { title: "High-Fidelity UI Design", desc: "Crafting modern pixel-perfect interfaces with rich visuals and micro-interactions.", icon: Palette },
-    { title: "Interactive Prototyping", desc: "Clickable prototypes simulating actual app interactions for user testing.", icon: SlidersHorizontal },
-    { title: "Design Systems & Tokens", desc: "Building comprehensive reusable component libraries for brand consistency.", icon: Eye }
+    {
+      title: "User Research & Personas",
+      desc: "Understanding persona needs, user journeys, and structuring information architecture.",
+      icon: Search,
+    },
+    {
+      title: "Information Architecture",
+      desc: "Mapping intuitive user flows and sitemaps for seamless digital navigation.",
+      icon: Layers,
+    },
+    {
+      title: "Wireframing & Usability",
+      desc: "Low-fidelity structural layouts to quickly validate core product functionality.",
+      icon: Layout,
+    },
+    {
+      title: "High-Fidelity UI Design",
+      desc: "Crafting modern pixel-perfect interfaces with rich visuals and micro-interactions.",
+      icon: Palette,
+    },
+    {
+      title: "Interactive Prototyping",
+      desc: "Clickable prototypes simulating actual app interactions for user testing.",
+      icon: SlidersHorizontal,
+    },
+    {
+      title: "Design Systems & Tokens",
+      desc: "Building comprehensive reusable component libraries for brand consistency.",
+      icon: Eye,
+    },
   ];
 
   return (
-    <div className={`slide-container relative w-full h-full overflow-hidden flex flex-col justify-between p-6 sm:p-8 md:p-10 transition-colors duration-300 ${
-      isDark ? 'bg-slate-950 text-white' : 'bg-white text-slate-800'
-    }`}>
-      <BackgroundShapes variant={isDark ? 'dark' : 'light'} slideNumber="10" />
+    <div
+      className={`slide-container relative w-full h-full overflow-hidden flex flex-col justify-between p-6 sm:p-8 md:p-10 transition-colors duration-300 ${
+        isDark
+          ? "bg-[var(--bg-app)] text-white"
+          : "bg-[var(--bg-app)] text-slate-800"
+      }`}
+    >
+      <BackgroundShapes variant={isDark ? "dark" : "light"} slideNumber="10" />
 
       {/* Slide Header */}
-      <div className={`relative z-10 shrink-0 flex items-center justify-between border-b pb-3 ${
-        isDark ? 'border-slate-800' : 'border-slate-200'
-      }`}>
+      <div
+        className={`relative z-10 shrink-0 flex items-center justify-between border-b border-[var(--header-border)] pb-3`}
+      >
         <div>
-          <span className="text-xs font-bold tracking-widest text-cyan-500 uppercase">Experience Engineering</span>
-          <h2 className="font-black italic uppercase tracking-tight text-2xl sm:text-3xl mt-0.5" style={{ color: isDark ? "#E0F2FE" : "#1E3A8A" }}>
-            UI/UX DESIGN <span style={{ color: isDark ? "#38BDF8" : "#0891B2" }}>EXCELLENCE</span>
+          <span className="text-xs font-bold tracking-widest text-[var(--color-cyan)] uppercase">
+            Experience Engineering
+          </span>
+          <h2 className="font-black italic uppercase tracking-tight text-2xl sm:text-3xl mt-0.5 text-[var(--color-navy)]">
+            UI/UX DESIGN{" "}
+            <span className="text-[var(--color-cyan)]">EXCELLENCE</span>
           </h2>
         </div>
-        <img src={isDark ? "/assets/2-Company-Logo/Final-b2.png" : "/assets/2-Company-Logo/Final.png"} alt="Innotech Logo" className="h-8 object-contain" />
+        <img
+          src={isDark ? "/assets/logo/Final-b2.png" : "/assets/logo/Final.png"}
+          alt="Innotech Logo"
+          className="h-8 object-contain"
+        />
       </div>
 
       {/* Scrollable Middle Content Area (Matches Slide 8 & 9 Hero + 6 Boxes Grid) */}
       <div className="relative z-10 flex-1 overflow-y-auto min-h-0 my-auto py-3 pr-1 grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
         {/* Left Hero Card */}
-        <div className="lg:col-span-5 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#031945] to-[#0A3D91] text-white shadow-xl flex flex-col justify-between border border-cyan-500/30">
+        <div className="lg:col-span-5 p-5 sm:p-6 rounded-2xl bg-[var(--bg-dark-card)] text-white shadow-xl border border-[var(--bg-dark-card-border)] flex flex-col justify-between border border-cyan-500/30">
           <div>
             <div className="p-3 rounded-xl bg-cyan-500/20 text-cyan-300 w-fit mb-3 border border-cyan-400/30">
               <Palette className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-extrabold leading-snug mb-2 text-white">Human-Centered Product Design</h3>
+            <h3 className="text-lg font-extrabold leading-snug mb-2 text-white">
+              Human-Centered Product Design
+            </h3>
             <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
-              We turn complex enterprise business logic into intuitive, accessible, and high-converting digital interfaces engineered for user delight and retention.
+              We turn complex enterprise business logic into intuitive,
+              accessible, and high-converting digital interfaces engineered for
+              user delight and retention.
             </p>
           </div>
 
@@ -58,18 +106,24 @@ export default function Slide10UIUXDesign({ theme = 'light' }) {
           {uxBoxes.map((item, idx) => {
             const IconComp = item.icon;
             return (
-              <div 
+              <div
                 key={idx}
-                className={`p-3.5 rounded-xl border flex items-start space-x-3 transition-all ${
-                  isDark ? 'bg-slate-900/90 border-slate-800' : 'bg-slate-50 border-slate-200 hover:bg-white hover:border-[#0A3D91]/40 shadow-2xs'
-                }`}
+                className={`p-3.5 rounded-xl border flex items-start space-x-3 transition-all ${"bg-[var(--bg-card)] border border-[var(--bg-card-border)] shadow-2xs"}`}
               >
-                <div className="p-2 rounded-lg bg-blue-500/10 text-blue-600 dark:text-cyan-400 shrink-0">
+                <div className="p-2 rounded-lg bg-[var(--badge-bg)] text-[var(--color-cyan)] shrink-0">
                   <IconComp className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className={`text-xs font-bold mb-0.5 ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.title}</h4>
-                  <p className={`text-[11px] leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item.desc}</p>
+                  <h4
+                    className={`text-xs font-bold mb-0.5 ${"text-[var(--text-primary)]"}`}
+                  >
+                    {item.title}
+                  </h4>
+                  <p
+                    className={`text-[11px] leading-relaxed ${"text-[var(--text-muted)]"}`}
+                  >
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             );
@@ -78,9 +132,9 @@ export default function Slide10UIUXDesign({ theme = 'light' }) {
       </div>
 
       {/* Slide Footer */}
-      <div className={`relative z-10 shrink-0 flex items-center justify-between border-t pt-3 text-xs ${
-        isDark ? 'border-slate-800 text-slate-400' : 'border-slate-200 text-slate-400'
-      }`}>
+      <div
+        className={`relative z-10 shrink-0 flex items-center justify-between border-t border-[var(--footer-border)] pt-3 text-xs text-[var(--footer-text)]`}
+      >
         <span className="font-semibold">Innotech Cloud Profile</span>
         <span>Slide 10 of 16</span>
       </div>

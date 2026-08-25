@@ -3,6 +3,80 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Brand Colors (Light Theme - Exact match from agent-data) */
+    --bg-app: #FFFFFF;
+    --bg-secondary: #F8FAFC;
+    --bg-card: #F4F7FA;
+    --bg-card-border: #E2E8F0;
+    
+    --bg-dark-card: #082859;
+    --bg-dark-card-alt: #162846;
+    --bg-dark-card-border: #0F3276;
+    
+    --color-navy: #0F3276;
+    --color-navy-box: #0F3276;
+    --color-cyan: #0099D8;
+    --color-cyan-light: #E5F8FF;
+    --color-cyan-border: #B8EDFF;
+    
+    --text-primary: #0F3276;
+    --text-cyan: #0099D8;
+    --text-body: #334155;
+    --text-muted: #64748B;
+    
+    --badge-bg: #E5F8FF;
+    --badge-border: #B8EDFF;
+    --badge-text: #0099D8;
+    
+    --badge-secondary-bg: #F0F4F8;
+    --badge-secondary-text: #0F3276;
+    
+    --grid-line: rgba(0, 153, 216, 0.07);
+    --watermark-num: rgba(15, 23, 42, 0.05);
+    
+    --header-border: #E2E8F0;
+    --footer-border: #E2E8F0;
+    --footer-text: #64748B;
+  }
+
+  .dark {
+    /* Brand Colors (Dark Theme - First part of dual headings & primary highlights are PURE WHITE) */
+    --bg-app: #090D16;
+    --bg-secondary: #0F172A;
+    --bg-card: #111827;
+    --bg-card-border: #1E293B;
+    
+    --bg-dark-card: #020617;
+    --bg-dark-card-alt: #0B132B;
+    --bg-dark-card-border: #1E3A8A;
+    
+    --color-navy: #FFFFFF;
+    --color-navy-box: #1E293B;
+    --color-cyan: #38BDF8;
+    --color-cyan-light: rgba(56, 189, 248, 0.12);
+    --color-cyan-border: rgba(56, 189, 248, 0.3);
+    
+    --text-primary: #FFFFFF;
+    --text-cyan: #38BDF8;
+    --text-body: #CBD5E1;
+    --text-muted: #94A3B8;
+    
+    --badge-bg: rgba(56, 189, 248, 0.15);
+    --badge-border: rgba(56, 189, 248, 0.35);
+    --badge-text: #38BDF8;
+    
+    --badge-secondary-bg: #1E293B;
+    --badge-secondary-text: #FFFFFF;
+    
+    --grid-line: rgba(56, 189, 248, 0.06);
+    --watermark-num: rgba(255, 255, 255, 0.03);
+    
+    --header-border: #1E293B;
+    --footer-border: #1E293B;
+    --footer-text: #94A3B8;
+  }
+
   body {
     font-family: 'Inter', 'Poppins', sans-serif;
   }
@@ -36,18 +110,19 @@
   }
 }
 
-/* Custom Scrollbar for Drawer */
+/* Custom Scrollbar for Drawer & Slide stage */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.1);
+  background: rgba(15, 23, 42, 0.05);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(10, 61, 145, 0.4);
+  background: var(--color-cyan);
   border-radius: 3px;
+  opacity: 0.5;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(10, 61, 145, 0.7);
+  background: var(--color-navy);
 }

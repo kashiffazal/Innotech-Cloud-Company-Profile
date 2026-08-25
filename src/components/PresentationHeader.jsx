@@ -56,26 +56,22 @@ export default function PresentationHeader({
 
   return (
     <header
-      className={`no-print h-16 border-b transition-colors duration-300 px-4 sm:px-6 flex items-center justify-between z-50 shrink-0 shadow-sm ${
+      className={`no-print h-14 sm:h-16 border-b transition-colors duration-300 px-2 sm:px-6 flex items-center justify-between z-50 shrink-0 shadow-sm ${
         isDark
           ? "bg-slate-900/95 border-slate-800 text-white"
           : "bg-white/95 border-slate-200 text-slate-800 shadow-md"
       }`}
     >
       {/* Brand Logo & Presentation Title */}
-      <div className="flex items-center space-x-3">
+      <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
         <img
-          src={
-            isDark
-              ? "/assets/2-Company-Logo/Final-b2.png"
-              : "/assets/2-Company-Logo/Final.png"
-          }
+          src={isDark ? "/assets/logo/Final-b2.png" : "/assets/logo/Final.png"}
           alt="Innotech Cloud"
-          className="h-7 sm:h-8 object-contain cursor-pointer"
+          className="h-6 sm:h-8 object-contain cursor-pointer max-w-[110px] sm:max-w-none"
           onClick={() => window.open("http://innotechcloud.com/", "_blank")}
         />
         <div
-          className={`h-5 w-px hidden md:block ${
+          className={`h-4 sm:h-5 w-px hidden md:block ${
             isDark ? "bg-slate-700" : "bg-slate-300"
           }`}
         />
@@ -94,11 +90,11 @@ export default function PresentationHeader({
         )}
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex items-center space-x-1.5 sm:space-x-2">
+      {/* Action Buttons (Scrollable horizontally on very small mobile screens) */}
+      <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto no-scrollbar py-1 min-w-0 max-w-full justify-end">
         {/* Slide Content Zoom Level Control (Type custom % e.g. 130% or 240%) */}
         <div
-          className={`relative flex items-center space-x-0.5 p-0.5 rounded-lg border transition-all ${
+          className={`relative flex items-center space-x-0.5 p-0.5 rounded-lg border transition-all shrink-0 ${
             isDark
               ? "bg-slate-800 border-slate-700 text-white"
               : "bg-slate-100 border-slate-300 text-slate-800"
@@ -107,9 +103,9 @@ export default function PresentationHeader({
           <button
             onClick={() => setZoomLevel((prev) => Math.max(25, prev - 25))}
             title="Zoom Out (-25%)"
-            className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+            className="p-1 sm:p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
           >
-            <ZoomOut className="w-3.5 h-3.5 text-cyan-500" />
+            <ZoomOut className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-cyan-500" />
           </button>
 
           <input
@@ -124,7 +120,7 @@ export default function PresentationHeader({
                 e.target.blur();
               }
             }}
-            className={`w-14 text-center bg-transparent text-xs font-extrabold font-mono focus:outline-none focus:bg-white dark:focus:bg-slate-900 rounded py-0.5 border border-transparent focus:border-cyan-500 transition-colors ${
+            className={`w-10 sm:w-14 text-center bg-transparent text-[11px] sm:text-xs font-extrabold font-mono focus:outline-none focus:bg-white dark:focus:bg-slate-900 rounded py-0.5 border border-transparent focus:border-cyan-500 transition-colors ${
               isDark ? "text-cyan-300" : "text-[#0A3D91]"
             }`}
             title="Type custom zoom percentage e.g. 130% or 240% and press Enter"
@@ -134,7 +130,7 @@ export default function PresentationHeader({
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               title="Presets Menu"
-              className="p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-slate-400"
+              className="p-0.5 sm:p-1 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-slate-400"
             >
               <ChevronDown className="w-3 h-3 text-cyan-500" />
             </button>
@@ -168,13 +164,13 @@ export default function PresentationHeader({
           <button
             onClick={() => setZoomLevel((prev) => Math.min(500, prev + 25))}
             title="Zoom In (+25%)"
-            className="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+            className="p-1 sm:p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
           >
-            <ZoomIn className="w-3.5 h-3.5 text-cyan-500" />
+            <ZoomIn className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-cyan-500" />
           </button>
         </div>
 
-        {/* Aspect Ratio Mode Toggle */}
+        {/* Aspect Ratio Mode Toggle (Hidden on Mobile) */}
         <button
           onClick={() => setAspectRatioMode(is4x3 ? "16:9" : "4:3")}
           title={
@@ -182,7 +178,7 @@ export default function PresentationHeader({
               ? "Switch to 16:9 Widescreen (1920x1080)"
               : "Switch to 4:3 Standard (1024x768)"
           }
-          className={`flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+          className={`hidden md:flex items-center space-x-1 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg text-xs font-semibold border transition-all shrink-0 ${
             isDark
               ? "bg-slate-800 hover:bg-slate-700 text-cyan-300 border-slate-700"
               : "bg-slate-100 hover:bg-slate-200 text-[#0A3D91] border-slate-300"
@@ -193,7 +189,7 @@ export default function PresentationHeader({
           ) : (
             <Monitor className="w-3.5 h-3.5" />
           )}
-          <span>{is4x3 ? "4:3 Standard" : "16:9 Wide"}</span>
+          <span>{is4x3 ? "4:3" : "16:9"}</span>
         </button>
 
         {/* Share Button (Owner Mode Only) */}
@@ -201,7 +197,7 @@ export default function PresentationHeader({
           <button
             onClick={openShareModal}
             title="Share presentation link with clients"
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all"
+            className="flex items-center space-x-1 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all shrink-0"
           >
             <Share2 className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Share</span>
@@ -212,7 +208,7 @@ export default function PresentationHeader({
         <button
           onClick={() => setTheme(isDark ? "light" : "dark")}
           title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+          className={`flex items-center space-x-1 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold border transition-all shrink-0 ${
             isDark
               ? "bg-slate-800 hover:bg-slate-700 text-amber-300 border-slate-700"
               : "bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300"
@@ -226,11 +222,11 @@ export default function PresentationHeader({
           <span className="hidden md:inline">{isDark ? "Light" : "Dark"}</span>
         </button>
 
-        {/* Slideshow Auto-play */}
+        {/* Slideshow Auto-play (Hidden on Mobile) */}
         <button
           onClick={() => setIsPlaying(!isPlaying)}
           title={isPlaying ? "Pause Slideshow" : "Start Auto Slideshow"}
-          className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
+          className={`hidden md:flex items-center space-x-1 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold transition-all border shrink-0 ${
             isPlaying
               ? "bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-500/40 animate-pulse"
               : isDark
@@ -252,7 +248,7 @@ export default function PresentationHeader({
         <button
           onClick={toggleDrawer}
           title="Grid View / All Slides"
-          className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+          className={`flex items-center space-x-1 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold border transition-all shrink-0 ${
             isDark
               ? "bg-slate-800 hover:bg-slate-700 text-slate-300 border-slate-700"
               : "bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300"
@@ -266,16 +262,16 @@ export default function PresentationHeader({
         <button
           onClick={toggleFullscreen}
           title="Toggle Fullscreen Mode"
-          className={`p-1.5 rounded-lg border transition-all ${
+          className={`p-1 sm:p-1.5 rounded-lg border transition-all shrink-0 ${
             isDark
               ? "text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 border-slate-700"
               : "text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 border-slate-300"
           }`}
         >
           {isFullscreen ? (
-            <Minimize2 className="w-4 h-4" />
+            <Minimize2 className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
           ) : (
-            <Maximize2 className="w-4 h-4" />
+            <Maximize2 className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
           )}
         </button>
       </div>

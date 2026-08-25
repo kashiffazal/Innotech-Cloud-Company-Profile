@@ -77,6 +77,15 @@ export default function App() {
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
 
+  // Auto toggle 'dark' class on documentElement for CSS variables & Tailwind dark mode
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
   // Auto detect aspect ratio, mobile view, and zoom level on window resize
   useEffect(() => {
     const handleResize = () => {
@@ -298,9 +307,9 @@ export default function App() {
         } ${isFullscreen || isMobile ? "p-0 bg-white dark:bg-slate-950" : isClientView ? "p-2 sm:p-4" : "p-3 sm:p-4"}`}
       >
         <div
-          className={`overflow-hidden relative transition-all duration-300 flex flex-col bg-white ${
+          className={`overflow-hidden relative transition-all duration-300 flex flex-col bg-[var(--bg-app)] ${
             isFullscreen || isMobile
-              ? "w-full h-full rounded-none border-0 shadow-none bg-white dark:bg-slate-950"
+              ? "w-full h-full rounded-none border-0 shadow-none bg-[var(--bg-app)]"
               : `rounded-xl sm:rounded-2xl shadow-2xl border ${isDark ? "border-slate-800" : "border-slate-300"} ${is4x3 ? "aspect-[4/3]" : "aspect-[16/9]"}`
           }`}
           style={

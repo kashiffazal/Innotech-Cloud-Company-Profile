@@ -4,9 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "postinstall": "node copy-assets.js",
     "dev": "vite",
-    "build": "node copy-assets.js && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {

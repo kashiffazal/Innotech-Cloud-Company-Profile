@@ -89,16 +89,16 @@ export default function ClientNavigationOverlay({
       }`}
     >
       {/* Top Right Floating Utility Bar (Ratio, Zoom, Dark/Light & Fullscreen) */}
-      <div className="no-print absolute top-6 right-6 z-50 flex items-center space-x-2 bg-slate-900/85 backdrop-blur-md border border-slate-700/60 p-1.5 rounded-full shadow-2xl">
+      <div className="no-print absolute top-3 sm:top-6 right-3 sm:right-6 z-50 flex items-center space-x-1 sm:space-x-2 bg-slate-900/85 backdrop-blur-md border border-slate-700/60 p-1 sm:p-1.5 rounded-full shadow-2xl max-w-full overflow-x-auto no-scrollbar">
         {/* Zoom Control Pill (Fullscreen & Client View) */}
         {setZoomLevel && (
-          <div className="relative flex items-center space-x-0.5 px-2 py-1 rounded-full bg-slate-800/80 border border-slate-700/50">
+          <div className="relative flex items-center space-x-0.5 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-slate-800/80 border border-slate-700/50">
             <button
               onClick={() => setZoomLevel((prev) => Math.max(25, prev - 25))}
               title="Zoom Slide Out (-25%)"
               className="p-1 rounded-full hover:bg-slate-700 text-slate-300 transition-colors"
             >
-              <ZoomOut className="w-3.5 h-3.5 text-cyan-400" />
+              <ZoomOut className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-cyan-400" />
             </button>
 
             <input
@@ -113,7 +113,7 @@ export default function ClientNavigationOverlay({
                   e.target.blur();
                 }
               }}
-              className="w-14 text-center bg-transparent text-xs font-extrabold font-mono text-cyan-300 focus:outline-none focus:bg-slate-900 rounded py-0.5"
+              className="w-10 sm:w-14 text-center bg-transparent text-[11px] sm:text-xs font-extrabold font-mono text-cyan-300 focus:outline-none focus:bg-slate-900 rounded py-0.5"
               title="Type custom zoom percentage e.g. 130% or 240% and press Enter"
             />
 
@@ -121,7 +121,7 @@ export default function ClientNavigationOverlay({
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 title="Presets Menu"
-                className="p-1 rounded-full hover:bg-slate-700 text-slate-400 transition-colors"
+                className="p-0.5 sm:p-1 rounded-full hover:bg-slate-700 text-slate-400 transition-colors"
               >
                 <ChevronDown className="w-3 h-3 text-cyan-400" />
               </button>
@@ -157,16 +157,16 @@ export default function ClientNavigationOverlay({
               title="Zoom Slide In (+25%)"
               className="p-1 rounded-full hover:bg-slate-700 text-slate-300 transition-colors"
             >
-              <ZoomIn className="w-3.5 h-3.5 text-cyan-400" />
+              <ZoomIn className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-cyan-400" />
             </button>
           </div>
         )}
 
-        {/* Aspect Ratio Mode Toggle (16:9 vs 4:3) */}
+        {/* Aspect Ratio Mode Toggle (16:9 vs 4:3) - Hidden on Mobile */}
         <button
           onClick={() => setAspectRatioMode(is4x3 ? "16:9" : "4:3")}
           title={is4x3 ? "Switch to 16:9 Widescreen" : "Switch to 4:3 Standard"}
-          className="flex items-center space-x-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-cyan-300 transition-all border border-slate-700/50"
+          className="hidden md:flex items-center space-x-1 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-cyan-300 transition-all border border-slate-700/50"
         >
           {is4x3 ? (
             <Tv className="w-3.5 h-3.5 text-cyan-400" />
@@ -180,12 +180,12 @@ export default function ClientNavigationOverlay({
         <button
           onClick={() => setTheme(isDark ? "light" : "dark")}
           title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          className="p-2 rounded-full text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition-all border border-slate-700/50"
+          className="p-1.5 sm:p-2 rounded-full text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition-all border border-slate-700/50"
         >
           {isDark ? (
-            <Sun className="w-4 h-4 text-amber-400" />
+            <Sun className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-amber-400" />
           ) : (
-            <Moon className="w-4 h-4 text-cyan-400" />
+            <Moon className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-cyan-400" />
           )}
         </button>
 
@@ -193,20 +193,20 @@ export default function ClientNavigationOverlay({
         <button
           onClick={toggleFullscreen}
           title="Toggle Fullscreen"
-          className="p-2 rounded-full text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition-all border border-slate-700/50"
+          className="p-1.5 sm:p-2 rounded-full text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700 transition-all border border-slate-700/50"
         >
           {isFullscreen ? (
-            <Minimize2 className="w-4 h-4" />
+            <Minimize2 className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
           ) : (
-            <Maximize2 className="w-4 h-4" />
+            <Maximize2 className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
           )}
         </button>
       </div>
 
       {/* Top Left Branding Pill */}
-      <div className="no-print absolute top-6 left-6 z-50 flex items-center space-x-2 bg-slate-900/85 backdrop-blur-md border border-slate-700/60 px-3.5 py-1.5 rounded-full shadow-2xl">
+      <div className="no-print absolute top-3 sm:top-6 left-3 sm:left-6 z-50 hidden sm:flex items-center space-x-2 bg-slate-900/85 backdrop-blur-md border border-slate-700/60 px-3.5 py-1.5 rounded-full shadow-2xl">
         <img
-          src="/assets/2-Company-Logo/Final-b2.png"
+          src="/assets/logo/Final-b2.png"
           alt="Innotech Cloud"
           className="h-5 object-contain"
         />
@@ -221,9 +221,9 @@ export default function ClientNavigationOverlay({
         onClick={prevSlide}
         disabled={currentSlide === 0}
         title="Previous Slide"
-        className="no-print absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 p-3 sm:p-4 rounded-full bg-slate-900/85 hover:bg-cyan-500 hover:text-slate-950 disabled:opacity-20 disabled:hover:bg-slate-900/85 disabled:hover:text-slate-400 text-slate-200 border border-slate-700/60 shadow-2xl backdrop-blur-md transition-all transform hover:scale-110 active:scale-95"
+        className="no-print absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-50 p-2 sm:p-4 rounded-full bg-slate-900/85 hover:bg-cyan-500 hover:text-slate-950 disabled:opacity-20 disabled:hover:bg-slate-900/85 disabled:hover:text-slate-400 text-slate-200 border border-slate-700/60 shadow-2xl backdrop-blur-md transition-all transform hover:scale-110 active:scale-95"
       >
-        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
+        <ChevronLeft className="w-5 sm:w-6 h-5 sm:h-6 stroke-[2.5]" />
       </button>
 
       {/* Floating Right Side Next Arrow */}
@@ -231,22 +231,22 @@ export default function ClientNavigationOverlay({
         onClick={nextSlide}
         disabled={currentSlide === totalSlides - 1}
         title="Next Slide"
-        className="no-print absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 p-3 sm:p-4 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 disabled:opacity-20 text-white shadow-2xl backdrop-blur-md transition-all transform hover:scale-110 active:scale-95 border border-cyan-400/30"
+        className="no-print absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-50 p-2 sm:p-4 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 disabled:opacity-20 text-white shadow-2xl backdrop-blur-md transition-all transform hover:scale-110 active:scale-95 border border-cyan-400/30"
       >
-        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
+        <ChevronRight className="w-5 sm:w-6 h-5 sm:h-6 stroke-[2.5]" />
       </button>
 
       {/* Bottom Center Floating Progress & Counter Pill */}
-      <div className="no-print absolute bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center space-y-1">
-        <div className="bg-slate-900/85 backdrop-blur-md border border-slate-700/60 px-4 py-2 rounded-full shadow-2xl flex items-center space-x-3 text-xs text-slate-300">
-          <span className="text-cyan-400 font-bold font-mono">
+      <div className="no-print absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center space-y-1 max-w-[90%] sm:max-w-none">
+        <div className="bg-slate-900/85 backdrop-blur-md border border-slate-700/60 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-2xl flex items-center space-x-2 sm:space-x-3 text-xs text-slate-300 max-w-full">
+          <span className="text-cyan-400 font-bold font-mono shrink-0">
             {String(currentSlide + 1).padStart(2, "0")} /{" "}
             {String(totalSlides).padStart(2, "0")}
           </span>
           {slideTitles[currentSlide] && (
             <>
               <span className="text-slate-600">&bull;</span>
-              <span className="font-semibold text-white max-w-xs truncate">
+              <span className="font-semibold text-white max-w-[120px] xs:max-w-[180px] sm:max-w-xs truncate">
                 {slideTitles[currentSlide]}
               </span>
             </>
@@ -254,7 +254,7 @@ export default function ClientNavigationOverlay({
         </div>
 
         {/* Subtle Progress Bar Pill */}
-        <div className="w-32 h-1 bg-slate-800 rounded-full overflow-hidden">
+        <div className="w-24 sm:w-32 h-1 bg-slate-800 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300"
             style={{ width: `${progressPercent}%` }}
